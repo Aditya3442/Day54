@@ -1,0 +1,21 @@
+class Solution {
+    public long dividePlayers(int[] skill) {
+        int arr[]=new int[1001];
+        long totalSum=0;
+        for(int i : skill){
+            arr[i]++;
+            totalSum+=i;
+        }
+        if(totalSum%(skill.length/2) !=0 )
+            return -1;
+        int eachSum=(int)(totalSum/(skill.length/2));
+        long productSum=0;
+        for(int i : skill){      
+            if(arr[i]!=arr[eachSum-i])
+                return -1;
+            productSum+=i*(eachSum-i);                
+        }        
+        return productSum/2;
+        
+    }
+}
